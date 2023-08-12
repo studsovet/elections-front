@@ -1,0 +1,31 @@
+@font-face {
+    font-family: "HSE sans";
+    src: url("/public/fonts/HSESans-Black.otf") format("opentype");
+    font-weight: 800;
+}
+@font-face {
+    font-family: "HSE sans";
+    src: url("/public/fonts/HSESans-Bold.otf") format("opentype");
+    font-weight: 700;
+}
+@font-face {
+    font-family: "HSE sans";
+    src: url("/public/fonts/HSESans-SemiBold.otf") format("opentype");
+    font-weight: 600;
+}
+@font-face {
+    font-family: "HSE sans";
+    src: url("/public/fonts/HSESans-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+@font-face {
+    font-family: "HSE sans";
+    src: url("/public/fonts/HSESans-Italic.otf") format("opentype");
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: "HSE sans";
+    src: url("/public/fonts/HSESans-Thin.otf") format("opentype");
+    font-weight: 300;
+}
