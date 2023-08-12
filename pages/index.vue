@@ -1,9 +1,5 @@
-<script lang="ts" setup>
-const rule = ref<string>("123");
-</script>
+<script lang="ts" setup></script>
 
-<template>
-  <div>{{ rule }}</div>
-</template>
+<template></template>
 
 <style lang="scss" scoped></style>
