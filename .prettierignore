@@ -22,7 +22,3 @@ logs
 .env
 .env.*
 !.env.example
-
-# storybook
-.nuxt-storybook
-storybook-static
