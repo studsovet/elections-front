@@ -1,6 +1,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   components: true,
-  css: ["normalize.css/normalize.css"],
+  css: ["normalize.css/normalize.css", "@/styles/index.scss"],
   modules: ["@nuxtjs/tailwindcss"],
+  srcDir: "src"
 });
