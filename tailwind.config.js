@@ -10,17 +10,19 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        white: "#ffffff",
-        black: "#000000",
-        primary: "#001f99",
-        secondary: "#0d40ff",
-        grey: {
-          100: "#808080",
-          200: "#bfbfbf",
-          300: "#e6e6e6",
-        },
+        'white': 'var(--white)',
+        'blue-primary': 'var(--blue-primary)',
+        'blue-secondary': 'var(--blue-secondary)',
+        'grey-tertiary': 'var(--grey-tertiary)',
+        'grey-primary': 'var(--grey-primary)',
+        'grey-secondary': 'var(--grey-secondary)',
+        'success': 'var(--success)',
+        'danger': 'var(--danger)',
       },
-    },
+      fontFamily: {
+        'serif': 'var(--font-family)'
+      }
+    }
   },
   plugins: [],
 };
