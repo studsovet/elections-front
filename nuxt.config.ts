@@ -3,5 +3,8 @@ export default defineNuxtConfig({
   components: true,
   css: ["normalize.css/normalize.css", "@/styles/index.scss"],
   modules: ["@nuxtjs/tailwindcss"],
-  srcDir: "src"
+  srcDir: "src",
+  alias: {
+    "$lib": "/lib"
+  }
 });
