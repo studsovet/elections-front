@@ -1,10 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html {
     font-family: var(--font-family);
 }
 
-body,
-html {
+body {
     box-sizing: border-box;
-    font-size: 100%;
-    height: 100%;
+    background-color: var(--appBgColor, theme('colors.white'));
+}
+
+body, html, #__nuxt {
+    height: 100% !important;
+    width: 100 !important;
+}
+
+.typo-header-large {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -1px;
+}
+
+.typo-header {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.typo-subheader-large {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: -0.5px;
+}
+
+.typo-subheader {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.typo-body {
+    font-size: 1rem;
+    font-weight: 500;
 }
