@@ -1,11 +1,11 @@
 <script lang="ts" setup>
     import { type DefineComponent, computed, useSlots } from "vue";
-
     import type {
         ButtonTheme,
         ButtonSize,
         ButtonHtmlType
     } from "./types";
+    import { Typo } from "$lib/Typography";
 
     type ButtonProps = {
         theme?: ButtonTheme;
@@ -39,7 +39,8 @@
             themeClass,
             sizeClass,
             widthFull,
-            isIcon
+            isIcon,
+            Typo.SUBHEAD
         ];
     });
 </script>
