@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss"],
   srcDir: "src",
   alias: {
-    "$lib": "/lib"
+    "lib": "/lib",
+    "components": "/components"
   }
 });

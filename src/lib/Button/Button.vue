@@ -1,11 +1,11 @@
-<script lang="ts" setup>
+<!-- <script lang="ts" setup>
     import { type DefineComponent, computed, useSlots } from "vue";
     import type {
         ButtonTheme,
         ButtonSize,
         ButtonHtmlType
     } from "./types";
-    import { Typo } from "$lib/Typography";
+    import { Typo } from "lib/Typography";
 
     type ButtonProps = {
         theme?: ButtonTheme;
@@ -112,4 +112,4 @@
     --buttonBgColor: theme('colors.grey-secondary');
     --buttonTextColor: theme('colors.white');
 }
-</style>
+</style> -->
