@@ -99,7 +99,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100%;
 
     --inputPadding: 14px 18px;
     --inputFocusedPlaceholderPadding: 4px 20px;
@@ -107,9 +106,6 @@
 
 .content {
     display: flex;
-    flex: auto;
-    width: 100%;
-    height: 100%;
 }
 
 .input {
