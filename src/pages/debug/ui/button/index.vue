@@ -1,5 +1,6 @@
 <script lang="ts" setup>
     import Button from 'lib/Button/Button.vue';
+    import IcPlus from 'lib/Icon/Plus.svg';
 </script>
 
 <template>
@@ -26,6 +27,10 @@
         </div>
         <div class="button-block">
             <Button fullWidth>Кнопка</Button>
+        </div>
+        <div class="button-block _grey-back">
+            <Button :icon="IcPlus">Кнопка с иконкой</Button>
+            <Button :icon="IcPlus" theme="success"></Button>
         </div>
     </div>
 </template>

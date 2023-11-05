@@ -9,7 +9,7 @@
     type ButtonProps = {
         theme?: ButtonTheme;
         fullWidth?: boolean;
-        icon?: InstanceType<DefineComponent> | string;
+        icon?: InstanceType<DefineComponent>;
         disabled?: boolean;
         htmlType?: ButtonHTMLType;
     }
@@ -28,11 +28,13 @@
 
     const classes = computed<string[]>(() => {
         const theme = `_${props.theme}`;
-        const fullWidth = props.fullWidth ? `_full-width` : '';
+        const fullWidth = props.fullWidth ? '_full-width' : '';
+        const icon = props.icon && !slots.default ? '_icon' : '';
 
         return [
             theme,
             fullWidth,
+            icon,
             Typo.SUBHEAD
         ];
     });
@@ -47,10 +49,7 @@
         <slot></slot>
         
         <div class="button__icon" v-if="icon">
-            <template v-if="(typeof icon === 'string')">
-                {{ icon }}
-            </template>
-            <Component v-else :is="icon" />
+            <Component :is="icon" />
         </div>
     </button>
 </template>
@@ -63,7 +62,7 @@
     align-items: center;
     border-radius: 0.5rem;
     transition-duration: 200ms;
-    transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in;
     transition-property: background-color, border, color;
 
     background-color: var(--buttonBgColor);
@@ -162,36 +161,9 @@
     cursor: not-allowed;
 }
 
-// .button._icon {
-//     width: 3rem;
-//     height: 3rem;
-//     --buttonBorderRadius: 50%;
-// }
-
-// .button._size-large {
-//     --buttonPadding: 0.75rem;
-// }
-
-// .button._size-normal {
-//     --buttonPadding: 0.25rem 0.75rem;
-// }
-
-// .button._theme-primary {
-//     --buttonBgColor: theme('colors.blue-primary');
-//     --buttonTextColor: theme('colors.white');
-// }
-
-// .button._theme-secondary {
-//     --buttonBgColor: theme('colors.white');
-//     --buttonTextColor: theme('colors.blue-primary');
-// }
-
-// .button:hover:not(:disabled) {
-//     opacity: 0.75;
-// }
-
-// .button:disabled {
-//     --buttonBgColor: theme('colors.grey-secondary');
-//     --buttonTextColor: theme('colors.white');
-// }
+.button._icon {
+    width: 2rem;
+    height: 2rem;
+    --buttonPadding: 0;
+}
 </style>
