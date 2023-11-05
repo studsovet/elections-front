@@ -1,45 +1,38 @@
-<!-- <script lang="ts" setup>
-    import { type DefineComponent, computed, useSlots } from "vue";
+<script lang="ts" setup>
+    import { type DefineComponent } from 'vue';
     import type {
         ButtonTheme,
-        ButtonSize,
-        ButtonHtmlType
-    } from "./types";
-    import { Typo } from "lib/Typography";
+        ButtonHTMLType,
+    } from './types';
+    import { Typo } from 'lib/Typography';
 
     type ButtonProps = {
         theme?: ButtonTheme;
-        size?: ButtonSize;
-        widthFull?: boolean;
+        fullWidth?: boolean;
         icon?: InstanceType<DefineComponent> | string;
         disabled?: boolean;
-        htmlType?: ButtonHtmlType;
+        htmlType?: ButtonHTMLType;
     }
 
     const props = withDefaults(
         defineProps<ButtonProps>(),
         {
-            theme: "primary",
-            size: "normal",
+            theme: 'primary',
             disabled: false,
-            widthFull: false,
-            htmlType: "button"
+            fullWidth: false,
+            htmlType: 'button'
         }
     );
 
     const slots = useSlots();
 
     const classes = computed<string[]>(() => {
-        const themeClass = `_theme-${props.theme}`;
-        const sizeClass = `_size-${props.size}`;
-        const widthFull = props.widthFull ? `_width-full` : '';
-        const isIcon = !slots["default"] && props.icon ? '_icon' : '';
+        const theme = `_${props.theme}`;
+        const fullWidth = props.fullWidth ? `_full-width` : '';
 
         return [
-            themeClass,
-            sizeClass,
-            widthFull,
-            isIcon,
+            theme,
+            fullWidth,
             Typo.SUBHEAD
         ];
     });
@@ -51,13 +44,14 @@
         :class="classes"
         :disabled="disabled"
     >
+        <slot></slot>
+        
         <div class="button__icon" v-if="icon">
             <template v-if="(typeof icon === 'string')">
                 {{ icon }}
             </template>
-            <Component :is="icon" v-else/>
+            <Component v-else :is="icon" />
         </div>
-        <slot></slot>
     </button>
 </template>
 
@@ -67,49 +61,137 @@
     gap: 0.5rem;
     justify-content: center;
     align-items: center;
+    border-radius: 0.5rem;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+    transition-property: background-color, border, color;
 
-    background-color: var(--buttonBgColor, theme('colors.blue-primary'));
+    background-color: var(--buttonBgColor);
+    border: 2px solid var(--buttonBorderColor, currentColor);
     color: var(--buttonTextColor);
-    border-radius: var(--buttonBorderRadius, 1rem);
-    padding: var(--buttonPadding);
-
-    transition: ease-in-out .3s opacity;
+    padding: var(--buttonPadding, 7px 0.75rem);
+    width: var(--buttonWidth);
 }
 
-.button._icon {
-    width: 3rem;
-    height: 3rem;
-    --buttonBorderRadius: 50%;
+.button._full-width {
+    --buttonWidth: 100%;
 }
 
-.button._width-full {
-    width: 100%;
+.button._primary {
+    --buttonTextColor: theme('colors.blue-primary');
+    --buttonBgColor: theme('colors.white');
 }
 
-.button._size-large {
-    --buttonPadding: 0.75rem;
-}
-
-.button._size-normal {
-    --buttonPadding: 0.25rem 0.75rem;
-}
-
-.button._theme-primary {
+.button._primary:hover {
     --buttonBgColor: theme('colors.blue-primary');
+    --buttonTextColor: theme('colors.white');
+    --buttonBorderColor: theme('colors.blue-primary');
+}
+
+.button._primary:disabled {
+    --buttonBgColor: theme('colors.grey-secondary');
+    --buttonTextColor: theme('colors.grey-tertiary');
+    --buttonBorderColor: currentColor;
+}
+
+.button._secondary {
+    --buttonBgColor: transparent;
     --buttonTextColor: theme('colors.white');
 }
 
-.button._theme-secondary {
+.button._secondary:hover {
     --buttonBgColor: theme('colors.white');
     --buttonTextColor: theme('colors.blue-primary');
 }
 
-.button:hover:not(:disabled) {
-    opacity: 0.75;
+.button._secondary:disabled {
+    --buttonBgColor: transparent;
+    --buttonTextColor: theme('colors.grey-tertiary');
+    --buttonBorderColor: currentColor;
+}
+
+.button._success {
+    --buttonTextColor: theme('colors.white');
+    --buttonBgColor: theme('colors.success');
+}
+
+.button._success:hover {
+    --buttonTextColor: theme('colors.success');
+    --buttonBgColor: theme('colors.white');
+}
+
+.button._success:disabled {
+    --buttonBgColor: transparent;
+    --buttonTextColor: theme('colors.grey-tertiary');
+    --buttonBorderColor: currentColor;
+}
+
+.button._danger {
+    --buttonTextColor: theme('colors.white');
+    --buttonBgColor: theme('colors.danger');
+}
+
+.button._danger:hover {
+    --buttonTextColor: theme('colors.danger');
+    --buttonBgColor: theme('colors.white');
+}
+
+.button._danger:disabled {
+    --buttonBgColor: transparent;
+    --buttonTextColor: theme('colors.grey-tertiary');
+    --buttonBorderColor: currentColor;
+}
+
+.button._info {
+    --buttonBgColor: transparent;
+    --buttonTextColor: theme('colors.white');
+}
+
+.button._info:hover {
+    --buttonBgColor: theme('colors.blue-primary');
+    --buttonTextColor: theme('colors.white');
+}
+
+.button._info:disabled {
+    --buttonBgColor: transparent;
+    --buttonTextColor: theme('colors.grey-tertiary');
+    --buttonBorderColor: currentColor;
 }
 
 .button:disabled {
-    --buttonBgColor: theme('colors.grey-secondary');
-    --buttonTextColor: theme('colors.white');
+    cursor: not-allowed;
 }
-</style> -->
+
+// .button._icon {
+//     width: 3rem;
+//     height: 3rem;
+//     --buttonBorderRadius: 50%;
+// }
+
+// .button._size-large {
+//     --buttonPadding: 0.75rem;
+// }
+
+// .button._size-normal {
+//     --buttonPadding: 0.25rem 0.75rem;
+// }
+
+// .button._theme-primary {
+//     --buttonBgColor: theme('colors.blue-primary');
+//     --buttonTextColor: theme('colors.white');
+// }
+
+// .button._theme-secondary {
+//     --buttonBgColor: theme('colors.white');
+//     --buttonTextColor: theme('colors.blue-primary');
+// }
+
+// .button:hover:not(:disabled) {
+//     opacity: 0.75;
+// }
+
+// .button:disabled {
+//     --buttonBgColor: theme('colors.grey-secondary');
+//     --buttonTextColor: theme('colors.white');
+// }
+</style>

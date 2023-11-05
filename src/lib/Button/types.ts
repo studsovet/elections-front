@@ -1,5 +1,3 @@
-export type ButtonTheme = "primary" | "secondary" | "success";
+export type ButtonTheme = 'primary' | 'secondary' | 'success' | 'danger' | 'info';
 
-export type ButtonSize = "normal" | "large";
-
-export type ButtonHtmlType = "button" | "submit";
+export type ButtonHTMLType = 'button' | 'submit';

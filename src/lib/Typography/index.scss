@@ -36,6 +36,13 @@
     @apply sm:typo-body-desktop typo-body-mobile;
 }
 
+.typo-subhead {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: normal;
+    font-style: normal;
+}
+
 a {
     @apply typo-body-mobile hover:text-blue-primary text-blue-secondary transition-colors
         duration-200 cursor-pointer;
