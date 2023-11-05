@@ -9,7 +9,7 @@
     type ButtonProps = {
         theme?: ButtonTheme;
         fullWidth?: boolean;
-        icon?: InstanceType<DefineComponent>;
+        icon?: InstanceType<DefineComponent> | string;
         disabled?: boolean;
         htmlType?: ButtonHTMLType;
     }
