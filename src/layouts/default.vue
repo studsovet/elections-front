@@ -5,7 +5,7 @@
 <template>
     <Style>
         :root {
-            --appBgColor: var(--blue-secondary);
+            --appBgColor: var(--white);
         }
     </Style>
 

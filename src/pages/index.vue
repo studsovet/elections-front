@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-    import { Typo } from "$lib/Typography";
-    import Button from "$lib/Button/Button.vue";
+    // import { Typo } from "lib/Typography";
+    // import Button from "$lib/Button/Button.vue";
 </script>
 
 <template>
-    <div class="welcome-page">
+    <!-- <div class="welcome-page">
         <h1
             class="header"
             :class="Typo.HEAD_L"
@@ -25,31 +25,31 @@
                 Войти через ЭЛК
             </Button>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style lang="scss" scoped>
-.welcome-page {
-    @apply text-white;
+// .welcome-page {
+//     @apply text-white;
 
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
 
-.subheader, .header, .description {
-    text-align: center;
-}
+// .subheader, .header, .description {
+//     text-align: center;
+// }
 
-.subheader {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-}
+// .subheader {
+//     margin-top: 2rem;
+//     margin-bottom: 1rem;
+// }
 
-.btn-wrapper {
-    margin-top: 4rem;
-}
+// .btn-wrapper {
+//     margin-top: 4rem;
+// }
 </style>
