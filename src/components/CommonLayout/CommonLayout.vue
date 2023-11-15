@@ -1,20 +1,23 @@
 <script lang="ts" setup>
     import TheHeader from 'components/TheHeader/TheHeader.vue';
-    // type CommonLayoutProps = {
 
-    // };
+    type CommonLayoutProps = {
+        showTitle?: boolean,
+        showLogout?: boolean
+    };
 
-    // const props = withDefaults(
-    //     defineProps<CommonLayoutProps>(),
-    //     {
-
-    //     }
-    // );
+    const props = withDefaults(
+        defineProps<CommonLayoutProps>(),
+        {
+            showTitle: true,
+            showLogout: true
+        }
+    );
 </script>
 
 <template>
     <div class="app-layout">
-        <TheHeader />
+        <TheHeader :show-logout="showTitle" :show-title="showTitle" />
         <div class="app-content">
             <slot></slot>
         </div>
@@ -22,7 +25,7 @@
 </template>
 
 <style lang="scss" scoped>
-    @import '~/components/TheHeader/index.scss';
+    @import 'components/TheHeader/index.scss';
 
     .app-layout {
         width: 100%;
