@@ -6,7 +6,10 @@ export default defineNuxtConfig({
 	srcDir: 'src',
 	alias: {
 		'lib': '/lib',
-		'components': '/components'
+		'components': '/components',
+		'helpers': '/helpers',
+		'page': '/pages',
+		'routes': '/routes'
 	},
 	svgo: {
 		autoImportPath: '@/lib/Icon',

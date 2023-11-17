@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import { PageName } from './types';
+    import { PageName } from '~/types/routes';
 
     definePageMeta({
         name: PageName.Home

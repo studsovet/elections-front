@@ -3,8 +3,16 @@
     import Button from 'lib/Button/Button.vue';
 
     definePageMeta({
-        layout: 'login'
+        layout: 'login',
     });
+
+    async function onLoginClick() {
+        const { $config } = useNuxtApp();
+
+        const { data } = await useLazyFetch(`${$config.public.backendIp}/auth/elk`, {
+            query: { redirect_uri: 'http://localhost:3000/login' }
+        });
+    }
 </script>
 
 <template>
@@ -20,7 +28,7 @@
                 </p>
             </div>
             <div class="btn-wrapper">
-                <Button>Войти через ЭЛК</Button>
+                <Button @click="onLoginClick">Войти через ЭЛК</Button>
             </div>
         </div>
     </div>
