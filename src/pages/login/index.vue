@@ -6,13 +6,13 @@
         layout: 'login',
     });
 
-    // async function onLoginClick() {
-    //     const { $config } = useNuxtApp();
+    async function onLoginClick() {
+        // const { $config } = useNuxtApp();
 
-    //     await useFetch(`${$config.public.backendIp}/auth/elk`, {
-    //         query: { redirect_uri: 'http://localhost:3000/login' },
-    //     });
-    // }
+        // await useFetch(`${$config.public.backendIp}/auth/elk`, {
+        //     query: { redirect_uri: 'http://localhost:3000/login' },
+        // });
+    }
 </script>
 
 <template>
