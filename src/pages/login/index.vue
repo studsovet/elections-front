@@ -2,17 +2,22 @@
     import { Typo } from 'lib/Typography';
     import Button from 'lib/Button/Button.vue';
 
+    import { useSessionStore } from 'stores/session.store';
+
+    const sessionStore = useSessionStore();
+
     definePageMeta({
         layout: 'login',
+        cors: true
     });
 
     async function onLoginClick() {
-        // const { $config } = useNuxtApp();
-
-        // await useFetch(`${$config.public.backendIp}/auth/elk`, {
-        //     query: { redirect_uri: 'http://localhost:3000/login' },
-        // });
+        sessionStore.login();
     }
+
+    onMounted(async () => {
+        await sessionStore.getCurrentUser();
+    });
 </script>
 
 <template>

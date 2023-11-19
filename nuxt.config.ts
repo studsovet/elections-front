@@ -2,14 +2,19 @@ export default defineNuxtConfig({
 	devtools: { enabled: true },
 	components: true,
 	css: ['normalize.css/normalize.css', '@/styles/index.scss'],
-	modules: ['@nuxtjs/tailwindcss', 'nuxt-svgo', '@pinia/nuxt'],
+	modules: [
+		'@nuxtjs/tailwindcss',
+		'nuxt-svgo',
+		'@pinia/nuxt'
+	],
 	srcDir: 'src',
 	alias: {
 		'lib': '/lib',
 		'components': '/components',
 		'helpers': '/helpers',
 		'page': '/pages',
-		'routes': '/routes'
+		'routes': '/routes',
+		'stores': '/stores'
 	},
 	svgo: {
 		autoImportPath: '@/lib/Icon',
@@ -17,7 +22,8 @@ export default defineNuxtConfig({
 	},
 	runtimeConfig: {
 		public: {
-			backendIp: ''
+			backendIp: '',
+			clientIp: ''
 		}
 	}
 });

@@ -38,6 +38,7 @@
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@pinia/nuxt": "^0.4.11",
+    "axios": "^1.6.2",
     "normalize-scss": "^7.0.1",
     "normalize.css": "^8.0.1"
   }
