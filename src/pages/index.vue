@@ -1,7 +1,7 @@
 <script lang="ts" setup>
     import { PageName } from '~/types/routes';
-    import { Typo } from 'lib/Typography';
-    import { useSessionStore } from 'stores/session.store';
+    import { Typo } from '~/lib/Typography';
+    import { useSessionStore } from '~/stores/session.store';
 
     const sessionStore = useSessionStore();
 

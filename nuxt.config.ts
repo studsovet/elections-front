@@ -5,17 +5,10 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxtjs/tailwindcss',
 		'nuxt-svgo',
-		'@pinia/nuxt'
+		'@pinia/nuxt',
+		'@vueuse/nuxt'
 	],
 	srcDir: 'src',
-	alias: {
-		'lib': '/lib',
-		'components': '/components',
-		'helpers': '/helpers',
-		'page': '/pages',
-		'routes': '/routes',
-		'stores': '/stores'
-	},
 	svgo: {
 		autoImportPath: '@/lib/Icon',
 		componentPrefix: 'Ic'

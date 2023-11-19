@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import { Typo } from 'lib/Typography';
+    import { Typo } from '~/lib/Typography';
 </script>
 
 <template>

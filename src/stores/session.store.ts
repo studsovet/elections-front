@@ -1,4 +1,4 @@
-import { UserInfo } from 'types/user';
+import type { UserInfo } from '~/types/user';
 import { defineStore } from 'pinia';
 
 export const useSessionStore = defineStore('sessionStore', () => {

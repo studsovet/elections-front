@@ -1,4 +1,4 @@
-import { useSessionStore } from 'stores/session.store';
+import { useSessionStore } from '~/stores/session.store';
 import { PageName } from '~/types/routes';
 
 export default defineNuxtRouteMiddleware(async (to, _from) => {

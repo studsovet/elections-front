@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-    import Button from 'lib/Button/Button.vue';
-    import IcPlus from 'lib/Icon/Plus.svg';
+    import Button from '~/lib/Button/Button.vue';
+    import IcPlus from '~/lib/Icon/Plus.svg';
 </script>
 
 <template>
