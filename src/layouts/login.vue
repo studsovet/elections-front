@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <CommonLayout>
+    <CommonLayout :show-logout="false" :show-title="false">
         <slot></slot>
     </CommonLayout>
 </template>
