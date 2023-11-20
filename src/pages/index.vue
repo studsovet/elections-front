@@ -35,7 +35,7 @@
             </p>
         </div>
         <div class="navigation-block">
-            1
+            <ElectionStageNavigation title="Голосование" />
         </div>
     </div>
 </template>
