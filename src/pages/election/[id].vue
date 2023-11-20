@@ -35,7 +35,8 @@
 <style lang="scss" scoped>
     .election-page {
         width: 100%;
-        margin-top: 3.5rem;
+        padding-top: 3.5rem;
+        padding-bottom: 2.25rem;
     }
 
     .election-page__head-content {
