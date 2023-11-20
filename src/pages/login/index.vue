@@ -7,17 +7,12 @@
     const sessionStore = useSessionStore();
 
     definePageMeta({
-        layout: 'login',
-        cors: true
+        layout: 'login'
     });
 
     async function onLoginClick() {
         sessionStore.login();
     }
-
-    onMounted(async () => {
-        await sessionStore.getCurrentUser();
-    });
 </script>
 
 <template>

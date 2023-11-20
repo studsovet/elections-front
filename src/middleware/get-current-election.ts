@@ -19,4 +19,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
             }
         });
     }
+
+    await currentElectionStore.getCandidates();
 });

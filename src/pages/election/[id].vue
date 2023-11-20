@@ -1,9 +1,7 @@
 <script lang="ts" setup>
     import { PageName } from '~/types/routes';
     import { useCurrentElectionStore } from '~/stores/current-election.store';
-
-    import VoteWidget from '~/components/VoteWidget/VoteWidget.vue';
-import { Typo } from '~/lib/Typography';
+    import { Typo } from '~/lib/Typography';
 
     const currentElectionStore = useCurrentElectionStore();
 
@@ -33,9 +31,12 @@ import { Typo } from '~/lib/Typography';
     .election-page {
         width: 100%;
         height: 100%;
+        margin-top: 3.5rem;
+    }
+
+    .election-page__head-content {
         display: flex;
         justify-content: space-between;
-        margin-top: 3.5rem;
     }
 
     .title {
