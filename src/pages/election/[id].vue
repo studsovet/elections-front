@@ -1,7 +1,9 @@
 <script lang="ts" setup>
     import { PageName } from '~/types/routes';
     import { useCurrentElectionStore } from '~/stores/current-election.store';
+
     import { Typo } from '~/lib/Typography';
+    import CandidatesList from '~/components/CandidatesList/CandidatesList.vue';
 
     const currentElectionStore = useCurrentElectionStore();
 
@@ -24,19 +26,27 @@
                 Доступно голосов: {{ currentElectionStore.currentElection.mandates }}
             </p>
         </div>
+        <div class="election-page__vote-block">
+            <CandidatesList :candidates="currentElectionStore.candidates"/>
+        </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
     .election-page {
         width: 100%;
-        height: 100%;
         margin-top: 3.5rem;
     }
 
     .election-page__head-content {
         display: flex;
+        align-items: baseline;
         justify-content: space-between;
+    }
+
+    .election-page__vote-block {
+        margin-top: 2rem;
+        max-width: 720px;
     }
 
     .title {

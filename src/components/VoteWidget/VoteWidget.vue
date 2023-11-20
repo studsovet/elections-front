@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+    import { Typo } from '~/lib/Typography';
     import Button from '~/lib/Button/Button.vue';
     import IcPlus from '~/lib/Icon/Plus.svg';
     import IcMinus from '~/lib/Icon/Minus.svg';
 
     type VoteWidgetType = {
-        id: string;
         max: number;
         min?: number;
     }
@@ -44,14 +44,14 @@
         <p class="vote-text">
             Проголосовать
         </p>
-        <div class="btn-wrapper">
+        <div class="vote-widget__content">
             <Button
                 :icon="IcMinus"
                 theme="danger"
                 :disabled="removeDisabled"
                 @click="removeVote"
             ></Button>
-            <p class="vote-number">
+            <p class="vote-number" :class="[Typo.BODY]">
                 {{ votes }}
             </p>
             <Button
@@ -65,5 +65,22 @@
 </template>
 
 <style lang="scss" scoped>
-    
+    .vote-widget {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .vote-widget__content {
+        display: flex;
+        gap: 1.25rem;
+    }
+
+    .vote-text {
+        @apply text-white;
+    }
+
+    .vote-number {
+        @apply text-white;
+    }
 </style>
