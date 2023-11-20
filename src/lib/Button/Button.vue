@@ -4,7 +4,7 @@
         ButtonTheme,
         ButtonHTMLType,
     } from './types';
-    import { Typo } from 'lib/Typography';
+    import { Typo } from '~/lib/Typography';
 
     type ButtonProps = {
         theme?: ButtonTheme;

@@ -2,11 +2,14 @@
     import { PageName } from '~/types/routes';
     import { Typo } from '~/lib/Typography';
     import { useSessionStore } from '~/stores/session.store';
+    import { useElectionQueueStore } from '~/stores/election-queue.store';
 
     const sessionStore = useSessionStore();
+    const electionsQueueStore = useElectionQueueStore();
 
     definePageMeta({
-        name: PageName.Home
+        name: PageName.Home,
+        middleware: ['get-election-stages']
     });
 </script>
 

@@ -1,9 +1,11 @@
 import type { UserInfo } from '~/types/user';
 import { defineStore } from 'pinia';
+import { Cookies } from '~/types/cookie';
+import { useApi } from '~/services/useApi';
 
 export const useSessionStore = defineStore('sessionStore', () => {
     const { $config } = useNuxtApp();
-    const tokenCookie = useCookie('token');
+    const tokenCookie = useCookie(Cookies.AuthToken);
 
     const currentUser = ref<UserInfo | null>(null);
     
@@ -18,12 +20,19 @@ export const useSessionStore = defineStore('sessionStore', () => {
     }
 
     async function getCurrentUser() {
-        setCurrentUser({
-            email: '123',
-            first_name: 'Артём',
-            last_name: 'Почувалов'
+        const { token, baseUrl } = useApi();
+
+        const { data, error } = await useFetch<UserInfo>(`${baseUrl}/auth/me`, {
+            query: {
+                token
+            }
         });
-        // setCurrentUser(null);
+
+        if (!error.value) {
+            setCurrentUser(data.value);
+        } else {
+            setCurrentUser(null);
+        }
     }
 
     function login() {
