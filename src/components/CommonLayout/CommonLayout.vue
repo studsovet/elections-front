@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import TheHeader from 'components/TheHeader/TheHeader.vue';
+    import TheHeader from '~/components/TheHeader/TheHeader.vue';
 
     type CommonLayoutProps = {
         showTitle?: boolean,
@@ -25,7 +25,7 @@
 </template>
 
 <style lang="scss" scoped>
-    @import 'components/TheHeader/index.scss';
+    @import '~/components/TheHeader/index.scss';
 
     .app-layout {
         width: 100%;

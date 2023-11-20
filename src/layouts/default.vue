@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import CommonLayout from 'components/CommonLayout/CommonLayout.vue';
+    import CommonLayout from '~/components/CommonLayout/CommonLayout.vue';
 </script>
 
 <template>

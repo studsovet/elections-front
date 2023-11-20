@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-    import { Typo } from 'lib/Typography';
-    import Button from 'lib/Button/Button.vue';
+    import { Typo } from '~/lib/Typography';
+    import Button from '~/lib/Button/Button.vue';
 
-    import { useSessionStore } from 'stores/session.store';
+    import { useSessionStore } from '~/stores/session.store';
 
     const sessionStore = useSessionStore();
 
