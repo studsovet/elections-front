@@ -1,0 +1,49 @@
+@layer components {
+    .typo-header-desktop {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: normal;
+        font-style: normal;
+    }
+
+    .typo-header-mobile {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: normal;
+        font-style: normal;
+    }
+    
+    .typo-body-desktop {
+        font-size: 1.5rem;
+        font-weight: 400;
+        line-height: normal;
+        font-style: normal;
+    }
+
+    .typo-body-mobile {
+        font-size: 1.125rem;
+        font-weight: 400;
+        line-height: normal;
+        font-style: normal;
+    }
+}
+
+.typo-header {
+    @apply sm:typo-header-desktop typo-header-mobile;
+}
+
+.typo-body {
+    @apply sm:typo-body-desktop typo-body-mobile;
+}
+
+.typo-subhead {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: normal;
+    font-style: normal;
+}
+
+a {
+    @apply typo-body-mobile hover:text-blue-primary text-blue-secondary transition-colors
+        duration-200 cursor-pointer;
+}

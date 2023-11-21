@@ -1,5 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './global';
+@import './fonts';
+@import './variables';
 
-@import "./fonts";
+@import '~/lib/Typography/index.scss';
+@import '~/lib/Icon/index.scss';
