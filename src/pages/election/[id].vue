@@ -2,10 +2,14 @@
     import { PageName } from '~/types/routes';
     import { useCurrentElectionStore } from '~/stores/current-election.store';
 
+    import { Button } from '~/lib/Button';
     import { Typo } from '~/lib/Typography';
     import CandidatesList from '~/components/CandidatesList/CandidatesList.vue';
 
+
     const currentElectionStore = useCurrentElectionStore();
+    
+    const votesLeft = ref<number | undefined>(currentElectionStore.currentElection?.mandates);
 
     definePageMeta({
         name: PageName.Election,
@@ -14,20 +18,34 @@
             'get-current-election'
         ]
     });
+
+    function onVote() {
+
+    }
 </script>
 
 <template>
     <div class="election-page" v-if="currentElectionStore.currentElection">
-        <div class="election-page__head-content">
+        <div class="head-content">
             <h1 class="title" :class="[Typo.HEAD]">
                 {{ currentElectionStore.currentElection.name }}
             </h1>
             <p class="votes-left">
-                Доступно голосов: {{ currentElectionStore.currentElection.mandates }}
+                Доступно голосов: {{ votesLeft }}
             </p>
         </div>
-        <div class="election-page__vote-block">
-            <CandidatesList :candidates="currentElectionStore.candidates"/>
+        <div class="vote-block">
+            <CandidatesList
+                :candidates="currentElectionStore.candidates"
+                :election="currentElectionStore.currentElection"
+                v-model:votes-left="votesLeft"
+                @vote="onVote"
+            />
+        </div>
+        <div class="btn-block">
+            <Button :disabled="votesLeft !== 0" theme="primary">
+                Сохранить голоса и перейти дальше
+            </Button>
         </div>
     </div>
 </template>
@@ -39,13 +57,13 @@
         padding-bottom: 2.25rem;
     }
 
-    .election-page__head-content {
+    .head-content {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
     }
 
-    .election-page__vote-block {
+    .vote-block {
         margin-top: 2rem;
         max-width: 720px;
     }
@@ -56,5 +74,9 @@
 
     .votes-left {
         @apply text-blue-primary;
+    }
+
+    .btn-block {
+        margin-top: 2rem;
     }
 </style>

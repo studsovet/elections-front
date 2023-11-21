@@ -2,7 +2,6 @@
     import type { Candidate } from '~/types/candidate';
 
     import Button from '~/lib/Button/Button.vue';
-    import VoteWidget from '~/components/VoteWidget/VoteWidget.vue';
     import { Typo } from '~/lib/Typography';
 
     type CandidateCardProps = {
@@ -29,7 +28,7 @@
             <Button theme="info">Программа</Button>
         </div>
         <div class="vote-block">
-            <VoteWidget :max="10" />
+            <slot name="voteBlock"></slot>
         </div>
     </div>
 </template>

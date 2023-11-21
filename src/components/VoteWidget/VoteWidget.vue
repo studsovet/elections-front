@@ -5,36 +5,42 @@
     import IcMinus from '~/lib/Icon/Minus.svg';
 
     type VoteWidgetType = {
-        max: number;
+        votes: number;
+        max?: number;
         min?: number;
-    }
+    };
+
+    type VoteWidgetEmits = {
+        (e: 'update:votes', votes: number): void;
+    };
 
     const props = withDefaults(
         defineProps<VoteWidgetType>(),
         {
+            votes: 0,
             min: 0
         }
     );
 
-    const votes = ref<number>(0);
-    
+    const emit = defineEmits<VoteWidgetEmits>();
+
     const addDisabled = computed<boolean>(() => {
-        return votes.value >= props.max;
+        return props.max !== undefined && props.votes >= props.max;
     });
 
     const removeDisabled = computed<boolean>(() => {
-        return votes.value <= props.min;
+        return props.votes <= props.min;
     });
 
     function addVote() {
         if (!addDisabled.value) {
-            votes.value++;
+            emit('update:votes', props.votes + 1);
         }
     }
 
     function removeVote() {
         if (!removeDisabled.value) {
-            votes.value--;
+            emit('update:votes', props.votes - 1);
         }
     }
 </script>

@@ -7,3 +7,9 @@ export type Candidate = {
     approved: boolean;
     waitingForApprove: boolean;
 };
+
+export type CandidateVote = {
+    candidate: Candidate;
+    votes: number;
+    votesLeft: number;
+}
