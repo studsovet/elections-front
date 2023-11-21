@@ -10,6 +10,7 @@
     type ElectionStageNavigationProps = {
         title: string;
         icon?: InstanceType<DefineComponent> | string;
+        disabled?: boolean;
         onButtonClick?: () => void;
     } & ElectionStage;
 
@@ -17,6 +18,7 @@
         defineProps<ElectionStageNavigationProps>(),
         {
             status: ElectionStatus.Finished,
+            disabled: false,
             icon: IcUserCheck
         }
     );
@@ -33,8 +35,8 @@
 
 <template>
     <div class="election-stage-navigation">
-            <div class="election-stage-navigation__content">
-                <div class="title">
+        <div class="election-stage-navigation__content">
+            <div class="title">
                 {{ title }}
             </div>
             <p class="description">

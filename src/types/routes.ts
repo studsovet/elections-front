@@ -1,4 +1,5 @@
 export enum PageName {
     'Home' = 'home',
-    'Login' = 'login'
+    'Login' = 'login',
+    'Election' = 'election'
 };

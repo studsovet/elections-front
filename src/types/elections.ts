@@ -14,7 +14,7 @@ export type Election = {
     name: string;
     priority: number;
     isRunoff: boolean;
-    mandates?: boolean;
+    mandates?: number;
     isForNearForeign: boolean;
     isForFarForeign: boolean;
     acceptedCouncilOrganizationsIds: string[];

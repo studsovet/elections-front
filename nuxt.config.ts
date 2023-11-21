@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 		'@nuxtjs/tailwindcss',
 		'nuxt-svgo',
 		'@pinia/nuxt',
-		'@vueuse/nuxt'
+		'@vueuse/nuxt',
 	],
 	srcDir: 'src',
 	svgo: {
