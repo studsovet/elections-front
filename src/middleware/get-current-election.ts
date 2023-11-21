@@ -20,5 +20,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
         });
     }
 
-    await currentElectionStore.getCandidates();
+    await Promise.all([
+        currentElectionStore.getCandidates(),
+        currentElectionStore.getPublicKey()
+    ]);
 });
