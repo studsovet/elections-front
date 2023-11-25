@@ -7,7 +7,7 @@
     import IcUserCheck from '~/lib/Icon/UserCheck.svg';
     import Button from '~/lib/Button/Button.vue';
 
-    type ElectionStageNavigationProps = {
+    type ElectionStageNavigationItemProps = {
         title: string;
         icon?: InstanceType<DefineComponent> | string;
         election: Election;
@@ -16,7 +16,7 @@
     };
 
     const props = withDefaults(
-        defineProps<ElectionStageNavigationProps>(),
+        defineProps<ElectionStageNavigationItemProps>(),
         {
             disabled: false,
             icon: IcUserCheck,
