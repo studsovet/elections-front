@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-    import { type DefineComponent } from 'vue';
-    import type { ElectionStage } from './types';
-    import { ElectionStatus } from '~/types/elections';
+    import type { DefineComponent } from 'vue';
+    import type { Election } from '~/types/elections';
+    import { PageName } from '~/types/routes';
     import { getDescription } from './helpers/getDescription';
 
     import IcUserCheck from '~/lib/Icon/UserCheck.svg';
@@ -10,27 +10,39 @@
     type ElectionStageNavigationProps = {
         title: string;
         icon?: InstanceType<DefineComponent> | string;
+        election: Election;
+        endDescription?: string;
         disabled?: boolean;
-        onButtonClick?: () => void;
-    } & ElectionStage;
+    };
 
     const props = withDefaults(
         defineProps<ElectionStageNavigationProps>(),
         {
-            status: ElectionStatus.Finished,
             disabled: false,
-            icon: IcUserCheck
+            icon: IcUserCheck,
+            election: () => ({} as Election)
         }
     );
 
     const description = computed<string>(() => {
         return getDescription({
-            startTime: props.startTime,
-            finishTime: props.finishTime,
-            status: props.status,
+            startTime: props.election.startTime,
+            finishTime: props.election.finishTime,
+            status: props.election.status,
             endDescription: props.endDescription 
         });
     });
+
+    function navigateToElection() {
+        if (!props.election.id) return;
+
+        navigateTo({
+            name: PageName.Election,
+            params: {
+                id: props.election.id
+            }
+        });
+    }
 </script>
 
 <template>
@@ -43,7 +55,7 @@
                {{ description }}
             </p>
             <div class="btn-wrapper">
-                <Button @click="onButtonClick" theme="secondary">Перейти</Button>
+                <Button @click="navigateToElection" theme="secondary">Перейти</Button>
             </div>
         </div>
         <div class="election-stage-navigation__icon-wrapper">

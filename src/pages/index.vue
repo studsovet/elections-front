@@ -4,6 +4,9 @@
     import { useSessionStore } from '~/stores/session.store';
     import { useElectionQueueStore } from '~/stores/election-queue.store';
 
+    import ElectionStageNavigation from '~/components/ElectionStageNavigation/ElectionStageNavigation.vue';
+    import IcUserCheck from '~/lib/Icon/UserCheck.svg';
+
     const sessionStore = useSessionStore();
     const electionsQueueStore = useElectionQueueStore();
 
@@ -35,7 +38,10 @@
             </p>
         </div>
         <div class="navigation-block">
-            <ElectionStageNavigation title="Голосование" />
+            <ElectionStageNavigation
+                title="Голосование"
+                :icon="IcUserCheck"
+            />
         </div>
     </div>
 </template>
