@@ -1,9 +1,9 @@
 import { useApi } from '../useApi';
 
-export async function fetchElectionPublicKey(id: string) {
+export function fetchElectionPublicKey(id: string) {
     const { baseUrl, token } = useApi();
 
-    const result = await useAsyncData<string>(
+    return useAsyncData<string>(
         'getPublicKey',
         async () => {
             const response = await fetch(`${baseUrl}/elections/publicKey/${id}?` + new URLSearchParams({
@@ -11,7 +11,5 @@ export async function fetchElectionPublicKey(id: string) {
             }))
             return await (await response.blob()).text();
         }
-    ); 
-
-    return result;
+    );
 }

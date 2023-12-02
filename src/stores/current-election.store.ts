@@ -2,18 +2,28 @@ import { defineStore } from 'pinia';
 import { publicDecrypt } from 'crypto';
 import { useElectionQueueStore } from './election-queue.store';
 import { fetchCandidates, fetchElectionById, fetchElectionPublicKey } from '~/services/elections';
-import type { Election } from '~/types/elections';
+import { ElectionStatus, type Election } from '~/types/elections';
 import type { Candidate } from '~/types/candidate';
 
 export const useCurrentElectionStore = defineStore('currentElectionStore', () => {
     const electionQueueStore = useElectionQueueStore();
 
     const currentElection = ref<Election | null>(null);
+    const fetching = ref<boolean>(false);
+    const error = ref<Error | null>(null);
     const candidates = ref<Candidate[]>([]);
     const publicKey = ref<string | null>(null);
 
     function setCurrentElection(election: Election | null) {
         currentElection.value = election;
+    }
+
+    function setFetching(bool: boolean) {
+        fetching.value = bool;
+    }
+
+    function setError(newError: Error | null) {
+        error.value = newError;
     }
 
     function setCandidates(electionCandidates: Candidate[]) {
@@ -27,9 +37,19 @@ export const useCurrentElectionStore = defineStore('currentElectionStore', () =>
     async function getCurrentElection() {
         if (!electionQueueStore.currentElection) return;
         
-        const { data } = await fetchElectionById(electionQueueStore.currentElection);
-        if (data.value) {
-            setCurrentElection(data.value);
+        setFetching(true);
+        const { data, error } = await fetchElectionById(electionQueueStore.currentElection);
+
+        const currentElection = data.value;
+        if (currentElection) {
+            if (currentElection.status === ElectionStatus.Started) {
+                setCurrentElection(data.value);
+                setError(error.value);
+                setFetching(false);
+                return;
+            }
+            electionQueueStore.setElectionVoted(electionQueueStore.currentElection);
+            getCurrentElection();
         }
     }
 

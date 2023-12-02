@@ -2,10 +2,10 @@
     import { PageName } from '~/types/routes';
     import { Typo } from '~/lib/Typography';
     import { useSessionStore } from '~/stores/session.store';
-    import { useElectionQueueStore } from '~/stores/election-queue.store';
+
+    import ElectionStageNavigation from '~/components/ElectionStageNavigation/ElectionStageNavigation.vue';
 
     const sessionStore = useSessionStore();
-    const electionsQueueStore = useElectionQueueStore();
 
     definePageMeta({
         name: PageName.Home,
@@ -35,7 +35,7 @@
             </p>
         </div>
         <div class="navigation-block">
-            <ElectionStageNavigation title="Голосование" />
+            <ElectionStageNavigation />
         </div>
     </div>
 </template>
