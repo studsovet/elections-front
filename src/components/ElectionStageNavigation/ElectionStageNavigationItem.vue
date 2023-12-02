@@ -2,7 +2,7 @@
     import type { DefineComponent } from 'vue';
     import type { Election } from '~/types/elections';
     import { PageName } from '~/types/routes';
-    import { getDescription } from './helpers/getDescription';
+    import { getElectionDescription } from './helpers';
 
     import IcUserCheck from '~/lib/Icon/UserCheck.svg';
     import Button from '~/lib/Button/Button.vue';
@@ -10,7 +10,7 @@
     type ElectionStageNavigationItemProps = {
         title: string;
         icon?: InstanceType<DefineComponent> | string;
-        election: Election;
+        election: Election | null;
         endDescription?: string;
         disabled?: boolean;
     };
@@ -20,21 +20,16 @@
         {
             disabled: false,
             icon: IcUserCheck,
-            election: () => ({} as Election)
+            election: null
         }
     );
 
     const description = computed<string>(() => {
-        return getDescription({
-            startTime: props.election.startTime,
-            finishTime: props.election.finishTime,
-            status: props.election.status,
-            endDescription: props.endDescription 
-        });
+        return getElectionDescription(props.election);
     });
 
     function navigateToElection() {
-        if (!props.election.id) return;
+        if (!props.election?.id) return;
 
         navigateTo({
             name: PageName.Election,
@@ -46,26 +41,26 @@
 </script>
 
 <template>
-    <div class="election-stage-navigation">
-        <div class="election-stage-navigation__content">
+    <div class="election-stage-navigation-item">
+        <div class="content">
             <div class="title">
-                {{ title }}
+                {{ election?.name ?? title }}
             </div>
             <p class="description">
-               {{ description }}
+                {{ description }}
             </p>
             <div class="btn-wrapper">
                 <Button @click="navigateToElection" theme="secondary">Перейти</Button>
             </div>
         </div>
-        <div class="election-stage-navigation__icon-wrapper">
+        <div class="icon-wrapper">
             <Component :is="icon" class="icon" />
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-    .election-stage-navigation {
+    .election-stage-navigation-item {
         @apply bg-blue-primary;
         border-radius: 0.5rem;
         max-width: 320px;

@@ -1,1 +1,1 @@
-export { getDescription } from './getDescription';
+export { getElectionDescription } from './getElectionDescription';

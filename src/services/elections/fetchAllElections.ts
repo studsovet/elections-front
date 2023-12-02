@@ -1,15 +1,13 @@
 import { ElectionStatus } from '~/types/elections';
 import { useApi } from '../useApi';
 
-export async function fetchAllElections(status: ElectionStatus) {
+export function fetchAllElections(status: ElectionStatus) {
     const { baseUrl, token } = useApi();
 
-    const result = await useFetch<string[]>(`${baseUrl}/elections/all`, {
+    return useFetch<string[]>(`${baseUrl}/elections/all`, {
         query: {
             token,
             status
         }
     });
-
-    return result;
 }
