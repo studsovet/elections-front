@@ -53,7 +53,7 @@
     :global(.bottom-sheet__content) {
         max-width: 100% !important;
         min-height: 30vh !important;
-        max-height: 70vh !important;
+        max-height: 80vh !important;
         height: unset !important;
     }
 

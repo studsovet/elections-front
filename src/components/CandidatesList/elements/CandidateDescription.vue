@@ -57,4 +57,20 @@
     .name, .description {
         @apply text-blue-primary;
     }
+
+    @media screen and (max-width: theme('screens.sm')) {
+        .img-block {
+            float: none;
+            width: 100%;
+            width: 148px;
+            height: 210px;
+            margin: 0 auto;
+            margin-bottom: 1.75rem;
+        }
+
+        .name {
+            text-align: center;
+            margin-bottom: 1.75rem;
+        }
+    }
 </style>
