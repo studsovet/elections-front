@@ -2,7 +2,7 @@
     import type { Candidate, CandidateVote } from '~/types/candidate';
     import type { Election } from '~/types/elections';
 
-    import CandidateCard from './CandidateCard.vue';
+    import CandidateCard from './elements/CandidateCard.vue';
 
     type CandidateListProps = {
         candidates: Candidate[];
