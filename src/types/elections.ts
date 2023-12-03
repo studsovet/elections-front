@@ -24,3 +24,14 @@ export type Election = {
     finishTime?: string;
     status: ElectionStatus;
 };
+
+export type ElectionNormalVoices = [string, number][];
+
+export type ElectionRunoffVoices = string[];
+
+export type ElectionVoices = ElectionNormalVoices | ElectionRunoffVoices;
+
+export type ElectionVoicePayload = {
+    random: string;
+    voice: ElectionVoices;
+};
