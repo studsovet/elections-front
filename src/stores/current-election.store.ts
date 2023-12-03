@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
 import { useElectionQueueStore } from './election-queue.store';
 import { fetchCandidates, fetchElectionById, fetchElectionPublicKey } from '~/services/elections';
-import type { Election, ElectionNormalVoices, ElectionRunoffVoices, ElectionVoices } from '~/types/elections';
+import type { Election, ElectionNormalVoices, ElectionRunoffVoices } from '~/types/elections';
 import type { Candidate } from '~/types/candidate';
-import { sendVoice } from '~/services/elections/sendVoice';
+import { sendVoice } from '~/services/elections';
 
 export const useCurrentElectionStore = defineStore('currentElectionStore', () => {
     const electionQueueStore = useElectionQueueStore();

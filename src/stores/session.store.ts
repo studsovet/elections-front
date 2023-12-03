@@ -2,9 +2,11 @@ import type { UserInfo } from '~/types/user';
 import { defineStore } from 'pinia';
 import { Cookies } from '~/types/cookie';
 import { useApi } from '~/services/useApi';
+import { getMyProfile } from '~/services/auth';
 
 export const useSessionStore = defineStore('sessionStore', () => {
     const { $config } = useNuxtApp();
+    const { baseURL } = useApi();
     const tokenCookie = useCookie(Cookies.AuthToken);
 
     const currentUser = ref<UserInfo | null>(null);
@@ -20,14 +22,7 @@ export const useSessionStore = defineStore('sessionStore', () => {
     }
 
     async function getCurrentUser() {
-        const { token, baseURL } = useApi();
-
-        const { data, error } = await useFetch<UserInfo>(`auth/me`, {
-            baseURL,
-            query: {
-                token
-            }
-        });
+        const { data, error } = await getMyProfile();
 
         if (!error.value) {
             setCurrentUser(data.value);
@@ -37,8 +32,8 @@ export const useSessionStore = defineStore('sessionStore', () => {
     }
 
     function login() {
-        navigateTo(`${$config.public.backendIp}/auth/elk?redirect_uri=${$config.public.clientIp}/login`, {
-            external: true
+        navigateTo(`${baseURL}/auth/elk?redirect_uri=${$config.public.clientIp}/login`, {
+            external: true,
         });
     }
 
