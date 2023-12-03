@@ -19,7 +19,7 @@
 <template>
     <div class="candidate-card">
         <div class="img-block">
-            <img :src="candidate.photoUrl" :alt="`Картинка участника ${candidate.name}`" />
+            <img :src="candidate.photourl" :alt="`Картинка участника ${candidate.name}`" />
         </div>
         <div class="description-block">
             <h3 class="name" :class="[Typo.BODY]">

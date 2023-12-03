@@ -8,6 +8,6 @@ export function fetchAllElections(status: ElectionStatus) {
         query: {
             token,
             status
-        }
+        },
     });
 }
