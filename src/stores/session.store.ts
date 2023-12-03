@@ -20,9 +20,10 @@ export const useSessionStore = defineStore('sessionStore', () => {
     }
 
     async function getCurrentUser() {
-        const { token, baseUrl } = useApi();
+        const { token, baseURL } = useApi();
 
-        const { data, error } = await useFetch<UserInfo>(`${baseUrl}/auth/me`, {
+        const { data, error } = await useFetch<UserInfo>(`auth/me`, {
+            baseURL,
             query: {
                 token
             }

@@ -2,9 +2,10 @@ import { ElectionStatus } from '~/types/elections';
 import { useApi } from '../useApi';
 
 export function fetchAllElections(status: ElectionStatus) {
-    const { baseUrl, token } = useApi();
+    const { baseURL, token } = useApi();
 
-    return useFetch<string[]>(`${baseUrl}/elections/all`, {
+    return useFetch<string[]>('/elections/all', {
+        baseURL,
         query: {
             token,
             status

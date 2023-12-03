@@ -2,9 +2,10 @@ import type { Candidate } from '~/types/candidate';
 import { useApi } from '../useApi';
 
 export function fetchCandidates(id: string) {
-    const { baseUrl, token } = useApi();
+    const { baseURL, token } = useApi();
 
-    return useFetch<Candidate[]>(`${baseUrl}/elections/getCandidates/${id}`, {
+    return useFetch<Candidate[]>(`/elections/getCandidates/${id}`, {
+        baseURL,
         query: {
             token,
         }

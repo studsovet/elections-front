@@ -7,15 +7,18 @@ export function sendVoice(
     publicKey: string,
     electionVoice: ElectionVoices
 ) {
-    const { token, baseUrl } = useApi();
+    const { token, baseURL } = useApi();
 
     const encryptedVoice = encryptVoice(publicKey, electionVoice);
 
-    return useFetch<string[]>(`${baseUrl}/elections/vote/${election.id}`, {
+    return useFetch<string[]>(`/elections/vote/${election.id}`, {
+        baseURL,
         method: 'POST',
         query: {
-            token,
+            token
+        },
+        body: {
             voice: encryptedVoice
-        }
+        },
     });
 }

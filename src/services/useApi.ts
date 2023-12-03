@@ -3,7 +3,7 @@ import { Cookies } from '~/types/cookie';
 
 type UseApiReturn = {
     token: string | undefined | null;
-    baseUrl: string;
+    baseURL: string;
 };
 
 export function useApi() {
@@ -14,7 +14,7 @@ export function useApi() {
 
     const tokenQuery: UseApiReturn = reactive({
         token: tokenCookie,
-        baseUrl: BASE_URL
+        baseURL: BASE_URL
     });
 
     watch(
