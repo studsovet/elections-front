@@ -12,7 +12,7 @@
         icon?: InstanceType<DefineComponent> | string;
         disabled?: boolean;
         htmlType?: ButtonHTMLType;
-    }
+    };
 
     const props = withDefaults(
         defineProps<ButtonProps>(),
