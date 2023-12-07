@@ -1,5 +1,5 @@
 import { formatDistanceToNowStrict, parseISO, isValid } from 'date-fns';
-import { ru } from 'date-fns/locale';
+import { ru } from 'date-fns/locale/index.js';
 import { ElectionStatus, type Election } from '~/types/elections';
 
 const NO_ELECTIONS_STRING = 'В данных момент нет доступных голосований';
