@@ -1,14 +1,13 @@
 import type { Election } from '~/types/elections';
 import { useApi } from '../useApi';
 
-export async function fetchElectionById(id: string) {
-    const { baseUrl, token } = useApi();
+export function fetchElectionById(id: string) {
+    const { baseURL, token } = useApi();
 
-    const result = await useFetch<Election>(`${baseUrl}/elections/get/${id}`, {
+    return useFetch<Election>(`/elections/get/${id}`, {
+        baseURL,
         query: {
             token
         }
     });
-
-    return result;
 }

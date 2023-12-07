@@ -1,11 +1,11 @@
 <script lang="ts" setup>
     import { PageName } from '~/types/routes';
     import { useCurrentElectionStore } from '~/stores/current-election.store';
+    import type { Candidate, CandidateVote } from '~/types/candidate';
 
     import { Button } from '~/lib/Button';
     import { Typo } from '~/lib/Typography';
     import CandidatesList from '~/components/CandidatesList/CandidatesList.vue';
-
 
     const currentElectionStore = useCurrentElectionStore();
     
@@ -19,8 +19,23 @@
         ]
     });
 
-    function onVote() {
+    function onVote(payload: CandidateVote | Candidate[]) {
+        if (!currentElectionStore.currentElection) return;
 
+        if (currentElectionStore.currentElection.isRunoff) {
+
+        } else {
+            if (!Array.isArray(payload)) {
+                currentElectionStore.changeNormalElectionVoices(
+                    payload.candidate.id,
+                    payload.votes
+                );
+            }
+        } 
+    }
+
+    async function finishElection() {
+        await currentElectionStore.vote();
     }
 </script>
 
@@ -43,7 +58,11 @@
             />
         </div>
         <div class="btn-block">
-            <Button :disabled="votesLeft !== 0" theme="primary">
+            <Button
+                :disabled="votesLeft !== 0"
+                theme="primary"
+                @click="finishElection"
+            >
                 Сохранить голоса и перейти дальше
             </Button>
         </div>

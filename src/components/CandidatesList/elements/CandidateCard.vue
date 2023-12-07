@@ -3,6 +3,7 @@
 
     import Button from '~/lib/Button/Button.vue';
     import { Typo } from '~/lib/Typography';
+    import CandidateDescription from './CandidateDescription.vue';
 
     type CandidateCardProps = {
         candidate: Candidate;
@@ -14,22 +15,32 @@
             candidate: () => ({} as Candidate)
         }
     );
+
+    const showDescription = ref<boolean>(false);
+
+    function openDescription() {
+        showDescription.value = true;
+    }
 </script>
 
 <template>
     <div class="candidate-card">
         <div class="img-block">
-            <img :src="candidate.photoUrl" :alt="`Картинка участника ${candidate.name}`" />
+            <img :src="candidate.photourl" :alt="`Картинка участника ${candidate.name}`" />
         </div>
         <div class="description-block">
             <h3 class="name" :class="[Typo.BODY]">
                 {{ candidate.name }}
             </h3>
-            <Button theme="info">Программа</Button>
+            <Button theme="info" @click="openDescription">Программа</Button>
         </div>
         <div class="vote-block">
             <slot name="voteBlock"></slot>
         </div>
+
+        <BottomSheet v-model:show="showDescription">
+            <CandidateDescription :candidate="candidate" />
+        </BottomSheet>
     </div>
 </template>
 
@@ -48,7 +59,7 @@
         height: 140px;
         border-radius: 0.5rem;
         margin-right: 1rem;
-        background-size: contain;
+        object-fit: cover;
     }
 
     .description-block {

@@ -40,7 +40,10 @@
     "@pinia/nuxt": "^0.4.11",
     "@vueuse/core": "^10.6.1",
     "@vueuse/nuxt": "^10.6.1",
+    "@webzlodimir/vue-bottom-sheet": "^3.0.5",
     "axios": "^1.6.2",
+    "browser-crypto": "^2.1.0",
+    "date-fns": "^2.30.0",
     "jsencrypt": "^3.3.2",
     "normalize-scss": "^7.0.1",
     "normalize.css": "^8.0.1"
