@@ -18,5 +18,8 @@ export default defineNuxtConfig({
 			backendIp: '',
 			clientIp: ''
 		}
-	}
+	},
+	build: {
+	 transpile: ['date-fns']
+	},
 });
