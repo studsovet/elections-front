@@ -18,5 +18,11 @@ export default defineNuxtConfig({
 			backendIp: '',
 			clientIp: ''
 		}
-	}
+	},
+	build: {
+	 transpile: ['date-fns']
+	},
+	nitro: {
+		preset: 'cloudflare-pages',
+	  },
 });
