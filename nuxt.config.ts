@@ -22,4 +22,7 @@ export default defineNuxtConfig({
 	build: {
 	 transpile: ['date-fns']
 	},
+	nitro: {
+		preset: 'cloudflare-pages',
+	  },
 });
